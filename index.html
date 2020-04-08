@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Faking Textarea on Typing</title>
+</head>
+<body>
+	<h3>Type anthing slowly</h3>
+	<textarea style="width: 400px;height: 100px;"></textarea>
+	<script type="text/javascript">
+		let textarea = document.querySelector('textarea');
+		let text = 'I LOVE YOU!';
+		let j = 0;
+		textarea.addEventListener('input', function(e) {
+			textarea.value = '';
+			for (let i = 0; i < text.length; i++) {
+				textarea.value += text[i];
+				if (i >= j) break;
+			}
+			j++;
+			if (j >= text.length) {
+				j = 0;
+			}
+		});
+	</script>
+</body>
+</html>
